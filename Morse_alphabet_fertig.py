@@ -1,0 +1,37 @@
+import machine
+import utime
+
+print("BITTE MORSEN")
+wort= input()
+
+def blink(zeichen):
+    for symbol in zeichen:
+        LED.value(1)
+        t_ein = t0 if symbol == '.' else 3* t0
+        utime.sleep(t_ein)
+        LED.value(0)
+        utime.sleep(t0)        
+    utime.sleep(2* t0)
+
+  
+    
+LED = machine.Pin("LED", machine.Pin.OUT)
+LED.value(0)
+utime.sleep(1)
+t0 = 0.3
+
+codetabelle = {".-": "A", "-...": "B", "-.-.": "C", "-..": "D", "..-.": "E",
+    "--.": "G", "....": "H", "..": "I", ".---": "J", "-.-": "K",
+    ".-..": "L", "--": "M", "-.": "N", "---": "O", ".--.": "P",
+    "--.-": "Q", ".-.": "R", "...": "S", "-": "T", "..-": "U",
+    "...-": "V", ".--": "W", "-..-": "X", "-.--": "Y", "--..": "Z"}
+   
+
+
+
+while True :
+    for x in wort:
+      blink(codetabelle[x])
+    break
+
+
